@@ -641,11 +641,11 @@
                 last.style.display = "none";
             }
         });
-        var overlaysTree = [
+        var overlaysTree = [            
+            {label: 'Zonas Prioritarias de Atención Anemia<br /><table><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMuyBajo0.png" /></td><td>Zonas Prioritarias de nivel Muy Bajo</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelBajo1.png" /></td><td>Zonas Prioritarias de nivel Bajo</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMedio2.png" /></td><td>Zonas Prioritarias de nivel Medio</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMedioAlto3.png" /></td><td>Zonas Prioritarias de nivel Medio Alto</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelAlto4.png" /></td><td>Zonas Prioritarias de nivel Alto</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMuyAlto5.png" /></td><td>Zonas Prioritarias de nivel Muy Alto</td></tr></table>', layer: layer_ZonasPrioritariasdeAtencinAnemia_2},
             {label: '<img src="legend/Distritos_5.png" /> Distritos', layer: layer_Distritos_5},
             {label: '<img src="legend/Provincias_4.png" /> Provincias', layer: layer_Provincias_4},
             {label: '<img src="legend/Departamentos_3.png" /> Departamentos', layer: layer_Departamentos_3},
-            {label: 'Zonas Prioritarias de Atención Anemia<br /><table><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMuyBajo0.png" /></td><td>Zonas Prioritarias de nivel Muy Bajo</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelBajo1.png" /></td><td>Zonas Prioritarias de nivel Bajo</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMedio2.png" /></td><td>Zonas Prioritarias de nivel Medio</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMedioAlto3.png" /></td><td>Zonas Prioritarias de nivel Medio Alto</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelAlto4.png" /></td><td>Zonas Prioritarias de nivel Alto</td></tr><tr><td style="text-align: center;"><img src="legend/ZonasPrioritariasdeAtencinAnemia_2_ZonasPrioritariasdenivelMuyAlto5.png" /></td><td>Zonas Prioritarias de nivel Muy Alto</td></tr></table>', layer: layer_ZonasPrioritariasdeAtencinAnemia_2},
             {label: "Satellite", layer: layer_Satellite_1, radioGroup: 'bm' },
             {label: "OpenStreetMap", layer: layer_OpenStreetMap_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -689,7 +689,8 @@
 
         // Insertar al principio del control
         controlLayersElement.insertBefore(headerBar, controlLayersElement.firstChild);
-		document.addEventListener("DOMContentLoaded", function() {
+		//continua codigo original
+        document.addEventListener("DOMContentLoaded", function() {
             // set new Layers List height which considers toggle icon
             function newLayersListHeight() {
                 var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
