@@ -58,10 +58,6 @@
             background-repeat: no-repeat;
             display: block;
         }
-
-        .leaflet-bar button:hover {
-            background-color: #3367D6;
-        }
         /* Estilo para el botón de vista predeterminada */
         #defaultViewButton {
             position: absolute;
@@ -85,9 +81,18 @@
             justify-content: center;
             align-items: center;
         }
-
-        #defaultViewButton button:hover {
-            background-color: #3367D6; /* Color cuando se pasa el ratón por encima */
+        #infoSidebar {
+            width: 300px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: -300px;  /* Oculto inicialmente */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            z-index: 999;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto; /* Agregar scroll si el contenido es largo */
         }
 
         </style>
@@ -128,6 +133,8 @@
         <script src="data/Departamentos_3.js"></script>
         <script src="data/Provincias_4.js"></script>
         <script src="data/Distritos_5.js"></script>
+        <!-- Referencia al archivo descripcion.js -->
+        <script src="static/js/descripcion.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -243,6 +250,10 @@
             });
             var popupContent = '<table>\
                     <tr>\
+                        <th scope="row">Zonas Prioritarias de Atención de Anemia</th>\
+                        <td>' + (feature.properties['ZonasPrioritarias_Anemia'] !== null ? autolinker.link(String(feature.properties['ZonasPrioritarias_Anemia']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">UBIGEO</th>\
                         <td>' + (feature.properties['UBIGEO'] !== null ? autolinker.link(String(feature.properties['UBIGEO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -265,12 +276,7 @@
                             autolinker.link(Number(feature.properties['Area_km2']).toFixed(2).replace(/'/g, '\'')) : 
                             'No disponible') + 
                         '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Zonas Prioritarias de Atención de Anemia</th>\
-                        <td>' + (feature.properties['ZonasPrioritarias_Anemia'] !== null ? autolinker.link(String(feature.properties['ZonasPrioritarias_Anemia']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
+                    </tr>\ </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
